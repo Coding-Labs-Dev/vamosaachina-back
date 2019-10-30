@@ -1,0 +1,35 @@
+service: projetovamosachina
+provider:
+  name: aws
+  runtime: nodejs10.x
+  credentials: ${file(./.env.yml):credentials}
+  deploymentBucket:
+    name: 'vamosaachina-backend'
+
+custom:
+  writeEnvVars:
+    ENDPOINT: ${file(./.env.yml):${opt:stage}.ENDPOINT}
+    TOKEN: ${file(./.env.yml):${opt:stage}.TOKEN}
+    EMAIL: ${file(./.env.yml):${opt:stage}.EMAIL}
+    SANDBOX: ${file(./.env.yml):${opt:stage}.SANDBOX}
+    SANDBOX_EMAIL: ${file(./.env.yml):${opt:stage}.SANDBOX_EMAIL}
+    NOTIFICATIONEMAIL: ${file(./.env.yml):${opt:stage}.NOTIFICATIONEMAIL}
+  serverless-layers:
+    packageManager: yarn
+  sucrase:
+    sources:
+      - src/**/*.js
+    transforms:
+      - imports
+
+plugins:
+  - serverless-layers
+  - serverless-sucrase
+  - serverless-plugin-write-env-vars
+
+functions:
+  api:
+    handler: index.handler
+    events:
+      - http: ANY {proxy+}
+        cors: true

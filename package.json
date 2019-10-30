@@ -1,0 +1,33 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@luismramirezr/pagseguro": "^1.0.1",
+    "aws-serverless-express": "^3.3.6",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "dynamoose": "^1.11.1",
+    "express": "^4.17.1",
+    "serverless": "^1.55.1",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.4.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "nodemon": "^1.19.4",
+    "prettier": "^1.18.2",
+    "serverless-layers": "^1.4.2",
+    "serverless-plugin-write-env-vars": "^1.0.2",
+    "serverless-sucrase": "^0.0.2",
+    "sucrase": "^3.10.1"
+  },
+  "scripts": {
+    "dev": "NODE_ENV=dev nodemon index.js",
+    "dev:debug": "NODE_ENV=dev nodemon --inspect index.js"
+  }
+}
