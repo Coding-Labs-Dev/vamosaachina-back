@@ -55,7 +55,7 @@ const schema = new Schema(
 
 schema.methods.refreshToken = async (user, rsa) => {
   const refreshToken = jwt.sign({ sub: user.id, type: 'refreshToken' }, rsa, {
-    algorithm: 'RS256',
+    algorithm: 'HS256',
   });
 
   const { refreshTokens = [] } = await user
@@ -80,7 +80,7 @@ schema.methods.generateAuthToken = async (
   const { id } = user;
   const rsa = await fs.readFileSync(`pk-${RSAKEY}.pem`, 'utf8');
   const accessToken = jwt.sign({ sub: id, type: 'accessToken' }, rsa, {
-    algorithm: 'RS256',
+    algorithm: 'HS256',
     expiresIn,
   });
 

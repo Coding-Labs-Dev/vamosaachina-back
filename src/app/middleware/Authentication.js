@@ -21,7 +21,7 @@ module.exports = async (req, res, next) => {
     const rsa = await fs.readFileSync(`pk-${process.env.RSAKEY}.pem`, 'utf8');
     // if can verify the token, set req.user and pass to next middleware
     const decoded = jwt.verify(token, rsa, {
-      algorithms: ['RS256'],
+      algorithms: ['HS256'],
     });
 
     return bcrypt.compare(decoded.sub, verificationToken, (err, result) => {

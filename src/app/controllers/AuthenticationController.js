@@ -28,7 +28,7 @@ module.exports = {
     try {
       const rsa = await fs.readFileSync(`pk-${process.env.RSAKEY}.pem`, 'utf8');
       const decoded = jwt.verify(accessToken, rsa, {
-        algorithms: ['RS256'],
+        algorithms: ['HS256'],
       });
       if (!decoded) {
         return res.status(400).json({ msg: 'Invalid token' });
@@ -114,7 +114,7 @@ module.exports = {
       const rsa = await fs.readFileSync(`pk-${process.env.RSAKEY}.pem`, 'utf8');
       // if can verify the token, set req.user and pass to next middleware
       const decoded = jwt.verify(refreshToken, rsa, {
-        algorithms: ['RS256'],
+        algorithms: ['HS256'],
       });
       if (!decoded) {
         return res.status(400).json({ msg: 'Invalid token' });
