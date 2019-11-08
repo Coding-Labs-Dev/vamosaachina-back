@@ -8,17 +8,25 @@ provider:
 
 custom:
   writeEnvVars:
-    ENDPOINT: ${file(./.env.yml):${opt:stage}.ENDPOINT}
+    AWS_ACCESS_KEY_ID: ${file(./.env.yml):${opt:stage}.AWS_ACCESS_KEY_ID}
+    AWS_SECRET_ACCESS_KEY: ${file(./.env.yml):${opt:stage}.AWS_SECRET_ACCESS_KEY}
     TOKEN: ${file(./.env.yml):${opt:stage}.TOKEN}
     EMAIL: ${file(./.env.yml):${opt:stage}.EMAIL}
+    DATABASE: ${file(./.env.yml):${opt:stage}.DATABASE}
     SANDBOX: ${file(./.env.yml):${opt:stage}.SANDBOX}
     SANDBOX_EMAIL: ${file(./.env.yml):${opt:stage}.SANDBOX_EMAIL}
     NOTIFICATIONEMAIL: ${file(./.env.yml):${opt:stage}.NOTIFICATIONEMAIL}
+    NOTIFICATION_URL: ${file(./.env.yml):${opt:stage}.NOTIFICATION_URL}
+    RSAKEY: ${file(./.env.yml):${opt:stage}.RSAKEY}
+    ORIGIN: ${file(./.env.yml):${opt:stage}.ORIGIN}
   serverless-layers:
     packageManager: yarn
   sucrase:
     sources:
+      - config.js
+      - index.js
       - src/**/*.js
+
     transforms:
       - imports
 
