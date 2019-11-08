@@ -2,7 +2,7 @@ const fs = require('fs');
 const dynamoose = require('dynamoose');
 const EDID = require('edid');
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 if (process.env.NODE_ENV === 'dev') {
   dynamoose.local();
