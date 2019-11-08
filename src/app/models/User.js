@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const dynamoose = require('dynamoose');
 const EDID = require('edid');
 const jwt = require('jsonwebtoken');
@@ -14,7 +15,7 @@ const { Schema } = dynamoose;
 
 const schemaName = 'users';
 
-const { DATABASE, RSAKEY } = process.env;
+const { DATABASE } = process.env;
 
 const schema = new Schema(
   {
@@ -78,7 +79,10 @@ schema.methods.generateAuthToken = async (
   expiresIn = 3600
 ) => {
   const { id } = user;
-  const rsa = await fs.readFileSync(`pk-${RSAKEY}.pem`, 'utf8');
+  const rsa = await fs.readFileSync(
+    path.join(__dirname, '..', '..', `pk-${process.env.RSAKEY}.pem`),
+    'utf8'
+  );
   const accessToken = jwt.sign({ sub: id, type: 'accessToken' }, rsa, {
     algorithm: 'HS256',
     expiresIn,

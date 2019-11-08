@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
@@ -18,7 +19,10 @@ module.exports = async (req, res, next) => {
 
   try {
     // get keyPrefix
-    const rsa = await fs.readFileSync(`pk-${process.env.RSAKEY}.pem`, 'utf8');
+    const rsa = await fs.readFileSync(
+      path.join(__dirname, '..', '..', `pk-${process.env.RSAKEY}.pem`),
+      'utf8'
+    );
     // if can verify the token, set req.user and pass to next middleware
     const decoded = jwt.verify(token, rsa, {
       algorithms: ['HS256'],

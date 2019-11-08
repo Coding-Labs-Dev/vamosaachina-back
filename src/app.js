@@ -16,12 +16,23 @@ class App {
   }
 
   middlewares() {
-    this.server.use(
-      cors({
-        origin: process.env.ORIGIN,
-        credentials: true,
-      })
-    );
+    const whitelist = [
+      'http://localhost:3000',
+      'https://acupunturanachina.com.br',
+      'https://admin.acupunturanachina.com.br',
+    ];
+    const corsOptions = {
+      origin(origin, callback) {
+        if (whitelist.indexOf(origin) !== -1) {
+          callback(null, true);
+        } else {
+          callback(new Error('Not allowed by CORS'));
+        }
+      },
+      credentials: true,
+    };
+
+    this.server.use(cors(corsOptions));
     this.server.use(cookieParser());
     this.server.use(express.json());
     this.server.use(bodyParser.urlencoded({ extended: true }));
