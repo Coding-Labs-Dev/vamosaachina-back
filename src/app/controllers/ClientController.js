@@ -1,4 +1,4 @@
-const Client = require('../models/Client');
+import Client from '../models/Client';
 
 module.exports = {
   async index(req, res) {

@@ -1,5 +1,5 @@
-const dynamoose = require('dynamoose');
-const EDID = require('edid');
+import dynamoose from 'dynamoose';
+import EDID from 'edid';
 
 if (process.env.NODE_ENV === 'dev') {
   dynamoose.local();

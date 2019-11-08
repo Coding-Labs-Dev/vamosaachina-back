@@ -1,9 +1,9 @@
-const fs = require('fs');
-const path = require('path');
-const dynamoose = require('dynamoose');
-const EDID = require('edid');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
+import fs from 'fs';
+import path from 'path';
+import dynamoose from 'dynamoose';
+import EDID from 'edid';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
 
 if (process.env.NODE_ENV === 'dev') {
   dynamoose.local();

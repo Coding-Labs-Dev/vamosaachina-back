@@ -1,8 +1,8 @@
-const fs = require('fs');
-const path = require('path');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
-const User = require('../models/User');
+import fs from 'fs';
+import path from 'path';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
+import User from '../models/User';
 
 const cookieOptions = {
   httpOnly: true,
