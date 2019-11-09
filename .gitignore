@@ -6,6 +6,10 @@
 .env
 .env.yml
 
+# KEYS
+*.pem
+.pem
+
 ### macOS ###
 # General
 .DS_Store
