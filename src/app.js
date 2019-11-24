@@ -20,6 +20,7 @@ class App {
       'http://localhost:3000',
       'https://acupunturanachina.com.br',
       'https://admin.acupunturanachina.com.br',
+      /\.pagseguro\.com.br$/,
     ];
     const corsOptions = {
       origin(origin, callback) {

@@ -30,6 +30,7 @@ class NotificationController {
           status: transactionStatus,
           paymentLink,
           date,
+          lastEventDate,
           grossAmount,
           feeAmount,
           paymentMethod,
@@ -103,7 +104,7 @@ class NotificationController {
                   'Devolvida',
                   'Cancelada',
                 ][transactionStatus - 1],
-                date: new Date(date),
+                date: new Date(lastEventDate),
               },
             ],
           });
@@ -119,7 +120,7 @@ class NotificationController {
           ][transactionStatus - 1];
           transaction.history.unshift({
             status: transaction.status,
-            date: new Date(date),
+            date: new Date(lastEventDate),
           });
           await transaction.save();
         }
