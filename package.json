@@ -13,7 +13,7 @@
     "dotenv": "^8.2.0",
     "dynamoose": "^1.11.1",
     "edid": "^0.1.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "jsonwebtoken": "^8.5.1",
     "serverless": "^1.55.1",
     "yamljs": "^0.3.0"
