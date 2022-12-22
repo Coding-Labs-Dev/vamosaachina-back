@@ -14,7 +14,7 @@
     "dynamoose": "^1.11.1",
     "edid": "^0.1.2",
     "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "serverless": "^1.55.1",
     "yamljs": "^0.3.0"
   },
